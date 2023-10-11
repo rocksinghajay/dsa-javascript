@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Inserting element in array</title>
+    <script>
+        function insertElement() {
+            // Initialize an array with some initial values.
+            let array = [10, 20, 30, 40, 50];
+
+            // Get the element and position values from input fields on the web page.
+            let element = parseInt(document.getElementById("element").value);
+            let position = document.getElementById("position").value;
+
+            // Loop through the array in reverse order to make room for the new element.
+            for (let i = array.length - 1; i >= 0; i--) {
+                // If the current index is greater than or equal to the specified position,
+                // shift the current element to the right.
+                if (i >= position) {
+                    array[i + 1] = array[i];
+
+                    // If the current index is equal to the specified position,
+                    // insert the new element at this position.
+                    if (position == i) {
+                        array[i] = element;
+                    }
+                }
+            }
+
+            // Log the modified array with the new element inserted.
+            console.warn(array);
+        }
+        function insertElementBySplice() {
+            // Initialize an array with some initial values.
+            let array = [10, 20, 30, 40, 50];
+
+            // Get the element and position values from input fields on the web page.
+            let element = parseInt(document.getElementById("splice-element").value);
+            let position = document.getElementById("splice-position").value;
+
+            // Use the `splice` method to insert the new element into the array at the specified position.
+            // The `position` parameter determines the index at which to insert the element,
+            // and `0` indicates that no elements are to be removed.
+            array.splice(position, 0, element);
+
+            // Log the modified array with the new element inserted.
+            console.warn(array);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Insert Element using dsa</h1>
+    <input type="text" placeholder="enter position" id="position" />
+    <input type="text" placeholder="enter new element" id="element" />
+    <button id="insert" onclick="insertElement()">Enter</button>
+    <h1>Insert Element using built in method splice</h1>
+    <input type="text" placeholder="enter position" id="splice-position" />
+    <input type="text" placeholder="enter new element" id="splice-element" />
+    <button id="insert" onclick="insertElementBySplice()">Enter</button>
+</body>
+
+</html>
